@@ -23,8 +23,8 @@ int kombinasyon (int sayi1, int sayi2)
 
 int main()
 {
-    std::cout << faktoriyel(5) << "\n";
-    std::cout << permutasyon(6,3) << "\n";
-    std::cout << kombinasyon(5,3) << "\n";
+    std::cout << faktoriyel(5)      /*120*/    << "\n";
+    std::cout << permutasyon(6,3)   /*120*/    << "\n";
+    std::cout << kombinasyon(5,3)   /*10*/     << "\n";
     return 0;
 }
