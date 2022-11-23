@@ -2,9 +2,9 @@
 
 int faktoriyel(int sayi)
 {
-    if(sayi < 3)
+    if(sayi < 2)
     {
-        return 2;
+        return 1;
     }
     return  sayi * faktoriyel(sayi-1);
 }
@@ -12,19 +12,41 @@ int faktoriyel(int sayi)
 int permutasyon (int sayi1, int sayi2)
 {
 
-    return faktoriyel(sayi1) / faktoriyel(sayi1-sayi2);
+    return faktoriyel(sayi1) / (faktoriyel(sayi1-sayi2));
 }
 
 int kombinasyon (int sayi1, int sayi2)
 {
 
-    return (faktoriyel(sayi1) / faktoriyel(sayi1-sayi2)) / faktoriyel(sayi2);
+    return permutasyon(sayi1,sayi2) / faktoriyel(sayi2);
 }
 
-int main()
+int main(int argc, char** argv)
 {
-    std::cout << faktoriyel(5)      /*120*/    << "\n";
-    std::cout << permutasyon(6,3)   /*120*/    << "\n";
-    std::cout << kombinasyon(5,3)   /*10*/     << "\n";
+    if(argc > 1)
+    {
+        switch (argv[1][0])
+        {
+        case 'f':
+            std::cout << faktoriyel(std::atoi(argv[2])) << '\n';
+            break;
+
+        case 'c':
+            std::cout << kombinasyon(std::atoi(argv[2]), std::atoi(argv[3])) << '\n';
+            break;
+
+        case 'p':
+            std::cout << permutasyon(std::atoi(argv[2]), std::atoi(argv[3])) << '\n';
+            break;
+
+        case 'p':
+            std::cout << permutasyon(std::atoi(argv[2]), std::atoi(argv[3])) << '\n';
+            break;
+            
+        default:
+            std::cout << "Bilinmeyen komut\n";
+            break;
+        }
+    }
     return 0;
 }
